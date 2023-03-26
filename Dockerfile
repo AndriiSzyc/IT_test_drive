@@ -1,15 +1,16 @@
-# dockerfile based on caddy image  
-FROM caddy:2.0.0-alpine
+# docker image base on caddy image
+FROM caddy:2.4.3-alpine
 
-#copy all files from the current directory to the /usr/share/caddy directory in the container
-COPY . /usr/share/caddy
-
-#set the working directory to /usr/share/caddy
+# workdir
 WORKDIR /usr/share/caddy
 
-#expose port 80
+# copy all files
+COPY . .
 
+# expose port 
 EXPOSE 80
 
-#run caddy
+# run caddy
 CMD ["caddy", "run", "--config", "Caddyfile", "--adapter", "caddyfile"]
+
+
